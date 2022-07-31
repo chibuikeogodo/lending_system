@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body%}
+
+
+<div class="container">
+  <h2 align="center">Exam Time Table 2019/2020</h2>
+  <p align="center">This is the approved Exam time table for 2019/2020:</p>
+  <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Exam Hall</th>
+              <th>Time</th>
+              <th>Department</th>
+              <th>invigilators</th>
+            </tr>
+          </thead>
+    {% for exam in exams%}
+          <tbody>
+            <tr>
+              <td>{{exam.course_title}}</td>
+              <td>{{exam.course_code}}</td>
+              <td>{{exam.hall}}</td>
+              <td>{{exam.time}}</td>
+              <td>{{exam.department}}</td>
+              <td>{{exam.invigilators}}</td>
+                <td><a href="{% url 'timetable:TimeDelete' exam.id%}" class="crad-link"><b>Delete</b></a></td>
+            </tr>
+          </tbody>
+    {%endfor%}
+  </table>
+   <div class="form-group">
+     <input type="submit" value="Print Time Table" class="btn btn-primary btn-block" >
+   </div>
+</div>
+
+
+{%endblock%}

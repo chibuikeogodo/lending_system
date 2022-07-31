@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body%}
+<div class="row" align="center">
+  <div class="col-sm-4" align="center">
+    <div class="card" align="center">
+      <div class="card-body">
+        <img src="{%static 'img/admin.jpg'%}" class="card-img-top" alt="...">
+        <a href="{%url 'timetable:admin_page'%}" class="btn btn-primary">Admin Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4" align="center">
+    <div class="card" align="center">
+      <div class="card-body">
+        <img src="{%static 'img/student2.jpg'%}" class="card-img-top" alt="...">
+          <br/>
+        <a href="#" class="btn btn-primary">Student Page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%endblock%}
