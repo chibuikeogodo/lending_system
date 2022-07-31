@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+<h2>Active Lenders</h2>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/>
+{%for lenders in object_list %}
+    <b>{{lenders.user}}</b><br/> 
+    Amount: ₦{{lenders.amount|intcomma}}<br/>
+    Percentage: {{lenders.percentage}}%<br/>
+    Duration: {%if duration == 1%}{{lenders.duration}}Month {%else%}{{lenders.duration}}Months{%endif%}  <br/>
+    Total: ₦{{lenders.total_all|intcomma}} <br/>
+    Condition: {{lenders.conditions}}<br/>
+<small>Created on: {{lenders.date_created}}</small><br/>
+<a href="{%url 'lender_details' lenders.id%}">Full details</a>
+<hr>
+{%endfor%}
+
+{%endblock%}

@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+
+
+Welcome {{user.username}}<br/>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/><br/>
+
+<b>{{borrower.user}}</b><br/>
+    <b>i want a Loan of:</b> ₦{{borrower.amount}}<br/>
+    <b>At:</b> {{borrowers.percentage}}%<br/>
+    <b>i will Payback in:</b> {%if duration == 1%}{{borrowers.duration}}Month {%else%}{{borrowers.duration}}Months{%endif%}  <br/>
+    <b>Total:</b> ₦{{borrowers.total}} <br/>
+    <b>Reason for the loan:</b> {{borrowers.conditions}}<br/>
+    <small>Created on: {{borrowers.date_created}}</small><br/>
+
+{%endblock%}

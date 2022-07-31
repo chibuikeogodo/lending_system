@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{% load humanize %}
+
+{%block content%}
+<form action="" method="POST">
+    {%csrf_token%}
+    {%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/>
+    {%if transaction%}
+     {{ transaction }}
+    {%endif%}<br/>
+    <h3>Pledge a loan</h3>
+    Amount:
+    <input type="text" name="amount"><br/><br/>
+    conditions:
+    <input type="text" name="conditions"><br><br/>
+        percentage:
+    <input type="number" name="percentage"><br/><br/>
+        duration:
+    <input type="number" name="duration"><br/><br/>
+    <input type="submit" value="Create">
+
+</form>
+{%endblock%}

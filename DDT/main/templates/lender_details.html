@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+
+
+Welcome {{user.username}}<br/>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/>
+
+
+<b>{{lender.user}}</b><br/>
+    Amount: ₦{{lender.amount}}<br/>
+    Percentage: {{lender.percentage}}%<br/>
+    Duration: {%if duration == 1%}{{lender.duration}}Month {%else%}{{lender.duration}}Months{%endif%}  <br/>
+    Total: ₦{{lender.total_all}} <br/>
+    Condition: {{lender.conditions}}<br/>
+{%if lender.user.id == request.user.id%}
+<a href="">Update</a>
+{%else%}
+<form action="" method="POST">
+    {%csrf_token%}
+    {{lender.Borrower_approval}}
+    <input type="submit" value="Take Loan">
+</form>
+{%endif%}
+
+{%endblock%}

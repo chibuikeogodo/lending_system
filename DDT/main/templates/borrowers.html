@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+<h2>Loan Requests</h2>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/>
+
+{%for borrowers in object_list %}
+    <b>{{borrowers.user}}</b><br/>
+    <b>i want a Loan of:</b> ₦{{borrowers.amount|intcomma}}<br/>
+    <b>At:</b> {{borrowers.percentage}}%<br/>
+    <b>i will Payback in:</b> {%if duration == 1%}{{borrowers.duration}}Month {%else%}{{borrowers.duration}}Months{%endif%}  <br/>
+    <b>Total:</b> ₦{{borrowers.total|intcomma}} <br/>
+    <b>Reason for the loan:</b> {{borrowers.conditions}}<br/>
+    <small>Created on: {{borrowers.date_created}}</small><br/>
+     <a href="{%url 'borrowers_details' borrowers.id%}">Full details</a>
+<hr>
+{%endfor%}
+
+{%endblock%}

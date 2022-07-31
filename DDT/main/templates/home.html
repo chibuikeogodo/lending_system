@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+
+{%if user.is_authenticated %}
+Welcome {{user.username}}<br/>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else    %} Balance ₦0 {%endif%}<br/>
+<a href="/logout/">Sign Out</a> | <a href="/profile/">Dashboard</a>
+{% else %}
+<h3>Choose an action below</h3>
+<a href="login/">Login</a> | <a href="/register">Register</a>
+{%endif%}
+{%endblock%}
